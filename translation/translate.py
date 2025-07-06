@@ -59,7 +59,7 @@ def translate_text(text, src='en', dest='ja'):
 
 # 翻訳結果をPDFとして保存
 def save_translated_text_to_pdf(text, output_path):
-    pdf = JapanesePDF()
+    pdf = JapanesePDF(orientation='L')
     pdf.add_page()
     pdf.set_left_margin(10)   # 左マージン
     pdf.set_right_margin(10)  # 右マージン
@@ -68,7 +68,7 @@ def save_translated_text_to_pdf(text, output_path):
     for line in tqdm(text.split('\n'), desc="書き込み中"):
         # pdf.multi_cell(0, 10, line)
         if line.strip():
-            pdf.multi_cell(180, 10, line)
+            pdf.multi_cell(0, 10, line)
         else:
             pdf.ln(10)  # 空行対応
     
@@ -77,7 +77,7 @@ def save_translated_text_to_pdf(text, output_path):
 
 # 実行部分
 if __name__ == '__main__':
-    FILE_NAME = "InPrivate Digging  Enabling Tree-based Distributed Data Mining with Differential Privacy.pdf"  # あなたのPDFファイル名に置き換えてください
+    FILE_NAME = "Decision_Trees.pdf"  # あなたのPDFファイル名に置き換えてください
     
     INPUT_DIR_PATH = ".\input_pdf\\"
     input_pdf_path = INPUT_DIR_PATH + FILE_NAME
